@@ -48,7 +48,7 @@ define(function(require) {
 
             if (index % L === 0) {
                 list = [index + 1, index + L, index + L + 1, index - L, index - L + 1];
-            } else if (index % L === 7) {
+            } else if (index % L === L - 1) {
                 list = [index - 1, index + L, index + L - 1, index - L, index - L - 1];
             } else {
                 list = [index + 1, index - 1, index + L, index + L - 1, index + L + 1, index - L, index - L - 1, index - L + 1];
