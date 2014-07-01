@@ -29,9 +29,9 @@ define(function(require) {
             var res = 0;
             var neighbours = this._neighboursTiles(index);
             neighbours.list.forEach(function(el) {
-                if (el.mine === true) res++;
+                if (el.mine) res++;
             });
-
+console.log(neighbours.list, res);
             return {
                 own: neighbours.own,
                 count: res,
@@ -48,8 +48,8 @@ define(function(require) {
             var list = [index + 1, index - 1, index + L, index + L - 1, index + L + 1, index - L, index - L - 1, index - L + 1];
 
             // extract neighbours
-            for (i = 0; i < list.length - 1; i += 1) {
-                if (list[i] >= 0 && list[i] < L*L) {
+            for (i = 0; i < list.length; i += 1) {
+                if (data[list[i]]) {
                     el = data[list[i]];
                     el.index = list[i];
                     dataList.push(el);
