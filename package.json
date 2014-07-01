@@ -1,0 +1,11 @@
+{
+    "name": "Minesweeper",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "~3.4.8",
+        "grunt": "~0.4.4",
+        "grunt-contrib-less": "~0.10.0",
+        "grunt-contrib-uglify": "~0.5.0",
+        "grunt-contrib-copy": "~0.5.0"
+    }
+}

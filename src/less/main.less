@@ -1,0 +1,76 @@
+/* Mixin */
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+html, body {
+  position: relative;
+  height: 100%;
+}
+
+/* Main Content */
+#main {
+  margin: 50px auto;
+  width: 800px;
+  min-height: 500px;
+  background-color: aliceblue;
+  .border-radius(10px);
+  .content {
+    padding-bottom: 20px;
+  }
+  .row {
+    height: 100%;
+    margin: 0;
+    header {
+      font: bold 20px Arial;
+      text-align: center;
+      padding: 10px 0 20px 0;
+    }
+    aside {
+      width: 30%;
+      .my-button {
+        width: 70%;
+        margin-bottom: 7px;
+      }
+      .stat {
+        label {
+          display: inline-block;
+          width: 40%;
+          text-align: right;
+          padding-right: 5px;
+        }
+        .value {
+          display: inline-block;
+          width: 30px;
+          text-align: right;
+        }
+      }
+    }
+    .grid_wrapper {
+      width: 69%;
+      .main-grid {
+        width: 100%;
+        .grid-item {
+          position: relative;
+          display: inline-block;
+          margin: 1px;
+          background-color: #d3d3d3;
+          cursor: pointer;
+          color: #ffffff;
+          padding: 2px;
+        }
+        .grid-item:hover {
+          background-color: #add8e6;
+        }
+        .no-mines-discovered {
+          background-color: forestgreen;
+        }
+        .mines-discovered {
+          background-color: red;
+        }
+      }
+    }
+  }
+}
