@@ -41,11 +41,18 @@ define(function(require) {
         },
 
         _neighboursTiles: function(index) {
-            var i, el;
+            var i, el, list;
             var dataList = [];
             var data = this.toJSON();
             var L = this.gridDim;
-            var list = [index + 1, index - 1, index + L, index + L - 1, index + L + 1, index - L, index - L - 1, index - L + 1];
+
+            if (index % L === 0) {
+                list = [index + 1, index + L, index + L + 1, index - L, index - L + 1];
+            } else if (index % L === 7) {
+                list = [index - 1, index + L, index + L - 1, index - L, index - L - 1];
+            } else {
+                list = [index + 1, index - 1, index + L, index + L - 1, index + L + 1, index - L, index - L - 1, index - L + 1];
+            }
 
             // extract neighbours
             for (i = 0; i < list.length; i += 1) {
