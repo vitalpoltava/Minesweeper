@@ -31,7 +31,7 @@ define(function(require) {
             neighbours.list.forEach(function(el) {
                 if (el.mine) res++;
             });
-console.log(neighbours.list, res);
+
             return {
                 own: neighbours.own,
                 count: res,
