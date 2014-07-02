@@ -22,7 +22,8 @@ define(function(require) {
          */
         render: function() {
             this.mines = new Mines(this.config);
-            this.mines.reset(this.mines.populateListWithMines()); // populate
+            this.data = this.mines.populateListWithMines();
+            this.mines.reset(this.data); // populate
 
             this.renderWrapper()
                 .renderGrid(this.config);
@@ -105,10 +106,14 @@ define(function(require) {
             this.endGameFlag = true;
             msg = msg || 'Game over! You failed :(';
 
-            this.tiles.forEach(function($tile) {
-                var event = jQuery.Event('click');
-                $tile.trigger(event);
-            });
+            this.tiles.forEach(function($tile, index) {
+                if (this.data[index].mine) {
+                    var event = jQuery.Event('click');
+                    $tile.trigger(event);
+                } else {
+                    $tile.off('click'); // remove event handler
+                }
+            }.bind(this));
 
             alert(msg);
         },
