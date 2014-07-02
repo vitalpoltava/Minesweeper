@@ -12,8 +12,8 @@ define(function(require) {
         tiles: [],
         endGameFlag: false,
 
-        initialize: function(config) {
-            this.config = config; // here we expect number of mines per grid and grid's dimension
+        initialize: function(options) {
+            this.config = options.config; // here we expect number of mines per grid and grid's dimension
             this.render();
         },
 
@@ -81,9 +81,7 @@ define(function(require) {
             } else {
                 // END GAME (mine exploded)
                 $tile.addClass('mines-discovered');
-                if (this.endGameFlag === false) { // to invoke [endGame] just once
-                    this.endGame();
-                }
+                this.endGame();
             }
         },
 
@@ -103,6 +101,8 @@ define(function(require) {
         },
 
         endGame: function(msg) {
+            if (this.endGameFlag === true) return;
+
             this.endGameFlag = true;
             msg = msg || 'Game over! You failed :(';
 
@@ -110,8 +110,6 @@ define(function(require) {
                 if (this.data[index].mine) {
                     var event = jQuery.Event('click');
                     $tile.trigger(event);
-                } else {
-                    $tile.off('click'); // remove event handler
                 }
             }.bind(this));
 
