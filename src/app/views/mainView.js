@@ -5,7 +5,7 @@ define(function(require) {
 
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var template = require('jst!../templates/mainView.html');
+    var template = require('jst!templates/mainView.html');
     var MainGrid = require('views/mainGrid');
 
     return Backbone.View.extend({
@@ -23,7 +23,7 @@ define(function(require) {
         render: function() {
             this.$el.html(this.template(this.config));
 
-            // applying sub-views
+            // applying sub-view
             mainGrid = new MainGrid({el: '.grid_wrapper', config: this.config});
 
             return this;
