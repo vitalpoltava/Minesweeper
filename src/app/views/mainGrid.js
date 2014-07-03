@@ -12,9 +12,21 @@ define(function(require) {
         tiles: [],
         endGameFlag: false,
 
+        events: {
+            'reloadGame': 'reloadGame',
+            'checkMines': 'checkMines'
+        },
+
         initialize: function(options) {
             this.config = options.config; // here we expect number of mines per grid and grid's dimension
+            this.mainView = options.mainView;
+            this.addEvents();
             this.render();
+        },
+
+        addEvents: function() {
+            this.listenTo(this.mainView, 'reloadGame', this.reloadGame);
+            this.listenTo(this.mainView, 'checkMines', this.checkMines);
         },
 
         /**
@@ -27,10 +39,6 @@ define(function(require) {
 
             this.renderWrapper()
                 .renderGrid(this.config);
-
-            // Buttons behaviours
-            $('#new_game').click(this.reloadGame.bind(this));
-            $('#check_mines').click(this.checkMines.bind(this));
         },
 
         renderWrapper: function() {

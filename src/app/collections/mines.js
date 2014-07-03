@@ -6,8 +6,11 @@ define(function(require) {
 
     var _ = require('underscore');
     var Backbone = require('backbone');
+    var Mine = require('models/mine');
 
     return Backbone.Collection.extend({
+        model: Mine,
+
         initialize: function(config) {
             this.totalMines = config.totalMines || 10;
             this.gridDim = config.gridDimension || 8;

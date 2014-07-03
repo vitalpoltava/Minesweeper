@@ -16,6 +16,11 @@ define(function(require) {
             totalMines: 10
         },
 
+        events: {
+            'click .new_game': 'reloadGame',
+            'click .check_mines': 'checkMines'
+        },
+
         initialize: function() {
             this.render();
         },
@@ -24,9 +29,17 @@ define(function(require) {
             this.$el.html(this.template(this.config));
 
             // applying sub-view
-            mainGrid = new MainGrid({el: '.grid_wrapper', config: this.config});
+            mainGrid = new MainGrid({el: '.grid_wrapper', config: this.config, mainView: this});
 
             return this;
+        },
+
+        reloadGame: function() {
+            this.trigger('reloadGame');
+        },
+
+        checkMines: function() {
+            this.trigger('checkMines');
         }
     });
 });
