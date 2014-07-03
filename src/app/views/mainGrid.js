@@ -50,13 +50,12 @@ define(function(require) {
             var i, j, el, index = 0,
                 $gridWrapper = this.$el.find('.main-grid'),
                 gridDim = config.gridDimension || 8,
-                gridItemDim = parseInt($gridWrapper.width()*0.8/gridDim),
                 gridItem = new GridItem();
 
             // Crating gaming layout and add click handlers to tiles
             for (i = 1; i <= gridDim; i += 1) {
                 for (j = 1; j <= gridDim; j += 1) {
-                    el = $(gridItem.renderEmptyItem({dim: gridItemDim})); // render single tile
+                    el = $(gridItem.renderEmptyItem({dim: gridDim})); // render single tile
                     this.tiles.push(el); // save the ref
                     $gridWrapper.append(el);
                     el.click(this.checkTile.bind(this, index));
