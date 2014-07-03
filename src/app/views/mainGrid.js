@@ -12,11 +12,6 @@ define(function(require) {
         tiles: [],
         endGameFlag: false,
 
-        events: {
-            'reloadGame': 'reloadGame',
-            'checkMines': 'checkMines'
-        },
-
         initialize: function(options) {
             this.config = options.config; // here we expect number of mines per grid and grid's dimension
             this.mainView = options.mainView;
