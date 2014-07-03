@@ -17,8 +17,8 @@ define(function(require) {
         },
 
         events: {
-            'click .new_game': 'reloadGame',
-            'click .check_mines': 'checkMines'
+            'click .new_game': 'initiateReloadGame',
+            'click .check_mines': 'initiateCheckMines'
         },
 
         initialize: function() {
@@ -34,11 +34,11 @@ define(function(require) {
             return this;
         },
 
-        reloadGame: function() {
+        initiateReloadGame: function() {
             this.trigger('reloadGame');
         },
 
-        checkMines: function() {
+        initiateCheckMines: function() {
             this.trigger('checkMines');
         }
     });
